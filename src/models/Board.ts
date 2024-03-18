@@ -1,7 +1,6 @@
 import Cell from './Cell'
 import Colors from './Colors'
 import { Bishop } from './figures/Bishop'
-import Figure from './figures/Figure'
 import { King } from './figures/King'
 import { Knight } from './figures/Knight'
 import { Pawn } from './figures/Pawn'
@@ -27,6 +26,22 @@ export default class Board {
 
   public getCell (x: number, y: number) {
     return this.cells[y][x]
+  }
+
+  public hightLightCells (selectedCell: Cell | null) {
+    for (let i = 0; i < this.cells.length; i++) {
+      const row = this.cells[i]
+      for (let j = 0; j < row.length; j++) {
+        const target = row[j]
+        target.available = !!selectedCell?.figure?.canMove(target)
+      }
+    }
+  }
+
+  public getCopyBoard (): Board {
+    const newBoard = new Board()
+    newBoard.cells = this.cells
+    return newBoard
   }
 
   private addPawns () {
