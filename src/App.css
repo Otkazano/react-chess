@@ -51,3 +51,14 @@
   background-color: deepskyblue;
   /* background-color: rgba(181, 17, 17, 0.677); */
 }
+
+.title {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.lostBox {
+  display: flex;
+  margin: 10px;
+  gap: 15px;
+}
